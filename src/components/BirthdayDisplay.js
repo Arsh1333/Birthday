@@ -1,7 +1,7 @@
 function BirthdayDisplay() {
   return (
     <div className="BirthdayDisplay">
-      <h1>Hi</h1>
+      <h1>No birthday to show</h1>
     </div>
   );
 }
