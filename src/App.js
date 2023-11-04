@@ -4,22 +4,35 @@ import "./App.css";
 
 function App() {
   const [birthday, setBirthDay] = useState(" ");
-  const btnHandler = () => {
+  const [name, setName] = useState(" ");
+  const btnHandler = (e) => {
+    if (name == " ") {
+      setBirthDay(<BirthdayDisplay></BirthdayDisplay>);
+    } else {
+      setName(e.target.value);
+    }
     console.log("clicked");
-    setBirthDay(<BirthdayDisplay></BirthdayDisplay>);
   };
   return (
     <div className="App">
       <div className="main-content">
-        <div className="inputs">
-          <input palceholder="Enter Name" type="text"></input>
+        <form className="inputs">
+          <input
+            palceholder="Enter Name"
+            type="text"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          ></input>
           <input palceholder="Enter DOB" type="date"></input>
-        </div>
+        </form>
         <button className="btn" onClick={btnHandler}>
           Submit
         </button>
       </div>
-      <div className="birthday-wish">{birthday}</div>
+      <div className="side-content">
+        <div className="birthday-wish">{birthday}</div>
+      </div>
     </div>
   );
 }
