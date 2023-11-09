@@ -17,6 +17,14 @@ function App() {
     e.preventDefault();
     setDisplayedName(name);
     setDisplayDate(date);
+    const currentDate = new Date();
+    const inputDate = new Date(date);
+    if (
+      inputDate.getDate() === currentDate.getDate() &&
+      inputDate.getMonth() === currentDate.getMonth()
+    ) {
+      alert(`Happy birthday ${name} 🎂`);
+    }
   };
 
   return (
@@ -40,8 +48,11 @@ function App() {
           </button>
         </form>
       </div>
-      <p>Birthdays:{displayedName}</p>
-      <p>{displayDate}</p>
+      <div className="card">
+        <p>Birthdays:{displayedName}</p>
+        <p>{displayDate}</p>
+      </div>
+
       {/*<p>{name}</p>*/}
     </div>
   );
