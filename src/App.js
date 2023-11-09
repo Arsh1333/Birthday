@@ -17,6 +17,8 @@ function App() {
     e.preventDefault();
     setDisplayedName(name);
     setDisplayDate(date);
+  };
+  const btnHandler = () => {
     const currentDate = new Date();
     const inputDate = new Date(date);
     if (
@@ -24,6 +26,8 @@ function App() {
       inputDate.getMonth() === currentDate.getMonth()
     ) {
       alert(`Happy birthday ${name} 🎂`);
+    } else {
+      return alert("No Birthdays today☹️");
     }
   };
 
@@ -49,6 +53,7 @@ function App() {
         </form>
       </div>
       <div className="card">
+        <button onClick={btnHandler}>Check Birthdays</button>
         <p>Birthdays:{displayedName}</p>
         <p>{displayDate}</p>
       </div>
