@@ -7,6 +7,7 @@ function App() {
   const [displayedName, setDisplayedName] = useState("");
   const [date, setDate] = useState("");
   const [displayDate, setDisplayDate] = useState("");
+  const [birthdayList, setBirthdayList] = useState([]);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -17,6 +18,7 @@ function App() {
     e.preventDefault();
     setDisplayedName(name);
     setDisplayDate(date);
+    setBirthdayList([...birthdayList, name]);
   };
   const btnHandler = () => {
     const currentDate = new Date();
@@ -35,12 +37,7 @@ function App() {
     <div className="App">
       <div className="main-content">
         <form className="inputs">
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={handleNameChange}
-          />
+          <input type="text" value={name} onChange={handleNameChange} />
           <input
             type="date"
             placeholder="Date"
@@ -56,6 +53,11 @@ function App() {
         <button onClick={btnHandler}>Check Birthdays</button>
         <p>Birthdays:{displayedName}</p>
         <p>{displayDate}</p>
+        <ul>
+          {birthdayList.map((bday, index) => {
+            <li key={index}>{bday}</li>;
+          })}
+        </ul>
       </div>
 
       {/*<p>{name}</p>*/}
